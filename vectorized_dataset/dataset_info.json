@@ -1,0 +1,31 @@
+{
+  "citation": "",
+  "description": "",
+  "features": {
+    "Medicine Name": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "Composition": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "Uses": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "Side_effects": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "embedding": {
+      "feature": {
+        "dtype": "float32",
+        "_type": "Value"
+      },
+      "_type": "Sequence"
+    }
+  },
+  "homepage": "",
+  "license": ""
+}
