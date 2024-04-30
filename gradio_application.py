@@ -45,7 +45,19 @@ model = SentenceTransformer(
 
 
 # %%
-def search(query, top_k: int = 5):
+def search(query_medicine_name, query_com, query_use, query_side_effect, top_k: int = 5):
+
+    query=""
+    if query_medicine_name:
+        query = 'Medicine Name: '+query_medicine_name
+    if query_com:
+        query+=' Composition:'+query_com
+    if query_use:
+        query+=' Uses:'+query_use
+    if query_side_effect:
+        query+=' Side_effects:'+query_side_effect
+
+    print(query)
     # 1. Embed the query as float32
     query_embedding = model.encode(query)
 
@@ -84,7 +96,7 @@ def search(query, top_k: int = 5):
 
 with gr.Blocks(title="Quantized Retrieval") as demo:
 
-    query = gr.Textbox(
+    query_medicine_name = gr.Textbox(
         label="Query for Medicine Name",
         placeholder="Enter a Medicine Name",
     )
@@ -108,8 +120,7 @@ with gr.Blocks(title="Quantized Retrieval") as demo:
         #with gr.Column(scale=4):
         output = gr.Dataframe(headers=['Medicine Name', 'Composition', 'Uses', 'Side_effects'])
 
-    query.submit(search, inputs=[query, top_k], outputs=[output])
-    search_button.click(search, inputs=[query, top_k], outputs=[output])
+    search_button.click(search, inputs=[query_medicine_name, query_com, query_use, query_side_effect, top_k], outputs=[output])
 
 demo.queue()
 demo.launch()
