@@ -12,12 +12,15 @@ from sentence_transformers import SentenceTransformer
 from sentence_transformers.quantization import quantize_embeddings
 import faiss
 from usearch.index import Index
+import os
 
 # %% [markdown]
 # # Load Dataset
 
 # %%
-medical_dataset = load_from_disk("/workspaces/senetence-transformer-in-action/medical_terms")
+base_path = os.getcwd()
+full_path = os.path.join(base_path, 'medical_terms')
+medical_dataset = load_from_disk(full_path)
 
 # %% [markdown]
 # ```Text
@@ -28,8 +31,9 @@ medical_dataset = load_from_disk("/workspaces/senetence-transformer-in-action/me
 
 # %%
 # Load the int8 and binary indices. Int8 is loaded as a view to save memory, as we never actually perform search with it.
-int8_view = Index.restore("/workspaces/senetence-transformer-in-action/medicine_details_int8_usearch.index", view=True)
-binary_index: faiss.IndexBinaryFlat = faiss.read_index_binary("/workspaces/senetence-transformer-in-action/medicine_details.index")
+
+int8_view = Index.restore(os.path.join(base_path, 'medicine_details_int8_usearch.index'), view=True)
+binary_index: faiss.IndexBinaryFlat = faiss.read_index_binary(os.path.join(base_path, 'medicine_details.index'))
 
 # %% [markdown]
 # # Import Model to generate embedding
