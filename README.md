@@ -48,10 +48,12 @@ the embedding into binary or int8.
 
 
 # Project Architecture
-
 - ***Sentence Transformer:*** mixedbread-ai/mxbai-embed-large-v1
 - ***Vector Databse Implementation Libray:*** [faiss](https://github.com/facebookresearch/faiss.git), [USearch](https://unum-cloud.github.io/usearch/)
 - ***App Library:*** Gradio
+
+# Acknowledgement
+This project has been developed using Github Codespace. 
 
 # Model Card Author
 
