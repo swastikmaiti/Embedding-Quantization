@@ -1,5 +1,4 @@
 ---
-metadata
 title: quantized-semnatic-search
 emoji: 💻
 colorFrom: yellow
