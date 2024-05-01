@@ -10,6 +10,10 @@ pinned: false
 license: openrail
 ---
 
+<br><br>
+
+[Check out the App](https://huggingface.co/spaces/SwastikM/quantized-semnatic-search)✌️✌️
+
 # senetence-transformer-in-action
 
 Language model gets boosted performance from their ability to capture semantics. To capture the semantic similarity between documents we
