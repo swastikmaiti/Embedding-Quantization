@@ -103,18 +103,22 @@ with gr.Blocks(title="Quantized Retrieval") as demo:
     query_medicine_name = gr.Textbox(
         label="Query for Medicine Name",
         placeholder="Enter a Medicine Name",
+        value='Augmentin'
     )
     query_com = gr.Textbox(
         label="Query for Composition",
         placeholder="Enter a composition",
+        value='Bevacizumab'
     )
     query_use = gr.Textbox(
         label="Query for Uses",
         placeholder="Enter a Use Case",
+        value='Treatment of Bacterial infections'
     )
     query_side_effect = gr.Textbox(
         label="Query for Side_effects",
         placeholder="Enter a Side effect",
+        value='Vomiting Nausea Diarrhea Mucocutaneous candidiasis'
     )
     #with gr.Row():
     top_k = gr.Dropdown(choices=[1,2,4,8,10,15], label="No of Relevant Info",value=4)
