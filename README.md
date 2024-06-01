@@ -6,6 +6,10 @@ We go through the step by step procedure of qunatizing embedding along with conc
 All the explanations and Codes are reproduced based on the [Article](https://huggingface.co/blog/embedding-quantization) from
 Hugging Face.
 
+#
+
+<img src="https://github.com/swastikmaiti/Embedding-Quantization/blob/b611b302ebe0ecc8303d965a3b117a086e5b5205/embedding-quantization.png">
+
 # Introduction
 
 To implement a RAG System, we will mrequire some kind of retrieval system. Thus there has to be some database to retrieve from.
@@ -47,7 +51,7 @@ is the number of bits by with two embeddings differ. Lowe the Hamming Distance m
 - Embedding dim = 384
 - dtype = bit, each diension is of 1 bit
   
-  Memory usage `29 MB` (Rounded). It is `32X` lower memory requirement than `float32`
+  Memory usage = `29 MB` (Rounded). It is `32X` lower memory requirement than `float32`
 
 # Rescoring Technique
 We have a way to retrieve similar documents with humming distance as similarity measure for Binary Quantization. Though it speed ups the
