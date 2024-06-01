@@ -3,8 +3,8 @@
 In this this work we implement Embedding Quantization. This is a great technique for significantly faster and cheaper retrieval.
 We go through the step by step procedure of qunatizing embedding along with conceptual explanation and implementation.
 
-All the explanations and Codes are reproduced based on the [Article](https://huggingface.co/blog/embedding-quantization) from
-Hugging Face.
+`All the explanations and Codes are reproduced based on the [Article](https://huggingface.co/blog/embedding-quantization) from
+Hugging Face.`
 
 #
 
