@@ -3,6 +3,9 @@
 In this this work we implement Embedding Quantization. This is a great technique for significantly faster and cheaper retrieval.
 We go through the step by step procedure of qunatizing embedding along with conceptual explanation and implementation.
 
+All the explanations and Codes are reproduced based on the [Article](https://huggingface.co/blog/embedding-quantization) from
+Hugging Face.
+
 # Introduction
 
 To implement a RAG System, we will mrequire some kind of retrieval system. Thus there has to be some database to retrieve from.
@@ -66,4 +69,12 @@ We use `Binary Quantization` for the actual Vetor DB for in memory compuation. S
 disk space bcause we `do not` perfrom any compuation on this database. Firt we perform retrieval with `Binary Quantization` which is computation heavy, 
 then we perform rescoring with `Scalar Quantization` and return top_k documents.
 
+# Hugging Face
+The App is Hosted on Hugging Face Gradio Space. [Embedding Quantization](https://huggingface.co/spaces/SwastikM/Embedding-Quantization)
+
+#Acknowledgement
+Thanks to Hugging Face Team for the in depth explanation on Embedding Quantization. [Article](https://huggingface.co/blog/embedding-quantization)
+
+#
+### If you find the repo helpful, please drop a ⭐
 
