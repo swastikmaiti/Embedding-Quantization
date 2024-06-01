@@ -51,3 +51,8 @@ In rescoring techinque we first retrive `top_k`*`rescore multiplier` document i.
 Then we perform dot prduct between their embeddings (binary) and query (f32) embedding to calculate similarity scores and return `top_k` according to 
 the new similarity score.
 
+# Scalar Quantization
+This is another type of quantization to improve `retrieval performance`. Here instead of binary quantization we convert the `f32` embedding into 
+`int8` embeddings or `unit8` embeddings. Scalar quantization reduce memory requirement by `4x` as compared to `8x` in Binary Quantization but it has
+a retrieval performance of more than `99%` with a `rescore multiplier` of 10.
+
