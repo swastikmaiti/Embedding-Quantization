@@ -22,6 +22,15 @@ We need a sophisticated technique to bring down compuation load and memory load 
 
 We will take our example implemetation to make comarison with normal embedding.
 
+# File Structure
+
+- ***retrieve_dataset.ipynb:*** Retrieval `CoNaLa` dataset.
+- ***create_mbedding-vecotor.ipynb:*** Create `f32` embedding vectors.
+- ***binary_index.py:*** Perform Binary Quantization and create faiss vector database.
+- ***save_int8_index.py:*** Perform Scalar Quantization and create USearch database.
+- ***query_search.ipynb:*** Perform Query retrieval.
+- ***app.py:*** Gradio App Hosted on Hugging Face Gradio Space. [Embedding Quantization](https://huggingface.co/spaces/SwastikM/Embedding-Quantization)
+ 
 # Tools and Parameters Specifications
 
 - **faiss:** Store binary quantization embedding
