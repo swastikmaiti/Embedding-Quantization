@@ -9,8 +9,9 @@ To implement a RAG System, we will mrequire some kind of retrieval system. Thus 
 In LLM world this is a Vector Database. This database is different from normal SQL database in the sense that a Vector Databse store
 embedding of some dimension and for retrieval purpose we need to perform heavy computation on the databse to generate similarity score.
 
-Vector Database are costly becasuse it is both `Memory hungry` and `Compuation hungry`. We need a sophisticated technique to bring down
-compuation load and memory load while preserving the accuray. Here comes `Embedding Quantization`.
+Vector Database are costly becasuse it is both `Memory hungry` and `Compuation hungry`. That means the embedding has to be present
+on primary memory for compuation and computation is done on all the embeddings for similarity scoring.
+We need a sophisticated technique to bring down compuation load and memory load while preserving the accuray. Here comes `Embedding Quantization`.
 
 We will take our example implemetation to make comarison with normal embedding.
 
@@ -35,7 +36,8 @@ We will take our example implemetation to make comarison with normal embedding.
 To generate Binary Quantization from a `float32` embedding we simply threshold quantize each dimension at 0. It simple means `f(x)=0 if x<=0
 else 1`. We store the Binary Quantized Embedding in Vector DB. To perform retrieval we convert user query to binary quantized embedding. 
 Then we use Hamming Distance between qury embedding and Vector DB embeddings to perform similarity check on the Vector Database. Hamming distance
-is the number of bits by with two embeddings differ. Lowe the Hamming Distance more is the document relevant and hence higher similarity.
+is the number of bits by with two embeddings differ. Lowe the Hamming Distance more is the document relevant and hence higher similarity. On average
+`Binary Quantization` gives `24.76x` speed up and exactly `32x` memory saving.
 
 ### What is the Memory usage with Binary Quantized Embedding?
 - No of Index = 593891
@@ -54,13 +56,14 @@ the new similarity score.
 # Scalar Quantization
 This is another type of quantization to improve `retrieval performance`. Here instead of binary quantization we convert the `f32` embedding into 
 `int8` embeddings or `unit8` embeddings. Scalar quantization reduce memory requirement by `4x` as compared to `8x` in Binary Quantization but it has
-a retrieval performance of more than `99%` with a `rescore multiplier` of 10.
+a retrieval performance of more than `99%` with a `rescore multiplier` of 10. On average `Scalar Quantization` gives `3.77x` speed up and exactly `4x` memory saving.
 
 # Best of Both the World
 To benifit from the `memory` and `computation` requiremnt of Binary Quantization and `retrieval performance` of Scalar Quantization, in practice we
 use both the technique together.
 
-We use `Binary Quantization` for the actual Vetor DB for in memory compuation. Separately we store the `Scalar Quantization` in disk space.
-Firt we perform retrieval with `Binary Quantization` which is computation heavy, then we perform rescoring with `Scalar Quantization` and return top_k
-documents.
+We use `Binary Quantization` for the actual Vetor DB for in memory compuation. Separately we store the `Scalar Quantization` in disk space. We store in
+disk space bcause we `do not` perfrom any compuation on this database. Firt we perform retrieval with `Binary Quantization` which is computation heavy, 
+then we perform rescoring with `Scalar Quantization` and return top_k documents.
+
 
