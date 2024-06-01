@@ -56,3 +56,11 @@ This is another type of quantization to improve `retrieval performance`. Here in
 `int8` embeddings or `unit8` embeddings. Scalar quantization reduce memory requirement by `4x` as compared to `8x` in Binary Quantization but it has
 a retrieval performance of more than `99%` with a `rescore multiplier` of 10.
 
+# Best of Both the World
+To benifit from the `memory` and `computation` requiremnt of Binary Quantization and `retrieval performance` of Scalar Quantization, in practice we
+use both the technique together.
+
+We use `Binary Quantization` for the actual Vetor DB for in memory compuation. Separately we store the `Scalar Quantization` in disk space.
+Firt we perform retrieval with `Binary Quantization` which is computation heavy, then we perform rescoring with `Scalar Quantization` and return top_k
+documents.
+
