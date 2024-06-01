@@ -1,9 +1,0 @@
-pytest
-pytest-cov
-pylint
-black
-datasets==2.19.0
-faiss-cpu==1.8.0
-sentence-transformers==2.7.0
-usearch==2.12.0
-gradio==4.28.3
