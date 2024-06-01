@@ -46,7 +46,8 @@ is the number of bits by with two embeddings differ. Lowe the Hamming Distance m
 - No of Index = 593891
 - Embedding dim = 384
 - dtype = bit, each diension is of 1 bit
-With our implemented specifications it comes to be `29 MB` (Rounded). It is `32X` lower memory requirement than `float32`
+  
+  Memory usage `29 MB` (Rounded). It is `32X` lower memory requirement than `float32`
 
 # Rescoring Technique
 We have a way to retrieve similar documents with humming distance as similarity measure for Binary Quantization. Though it speed ups the
