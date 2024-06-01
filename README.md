@@ -55,8 +55,8 @@ is the number of bits by with two embeddings differ. Lowe the Hamming Distance m
 
 # Rescoring Technique
 We have a way to retrieve similar documents with humming distance as similarity measure for Binary Quantization. Though it speed ups the
-retrieval process but preserve roughly `92.5%` retrieval performance.
-We use a technique called `rescoring` intoduced in the [paper](https://arxiv.org/abs/2106.00882) to preserve alomost `96%` retrieval performance.
+retrieval process but preserve roughly `92.5%` `retrieval performance`.
+We use a technique called `rescoring` intoduced in the [paper](https://arxiv.org/abs/2106.00882) to preserve alomost `96%` `retrieval performance`.
 In rescoring techinque we first retrive `top_k`*`rescore multiplier` document i.e. `rescore multiplier x` times more documents than require.
 Then we perform dot prduct between their embeddings (binary) and query (f32) embedding to calculate similarity scores and return `top_k` according to 
 the new similarity score.
@@ -64,7 +64,7 @@ the new similarity score.
 # Scalar Quantization
 This is another type of quantization to improve `retrieval performance`. Here instead of binary quantization we convert the `f32` embedding into 
 `int8` embeddings or `unit8` embeddings. Scalar quantization reduce memory requirement by `4x` as compared to `8x` in Binary Quantization but it has
-a retrieval performance of more than `99%` with a `rescore multiplier` of 10. On average `Scalar Quantization` gives `3.77x` speed up and exactly `4x` memory saving.
+a `retrieval performance` of more than `99%` with a `rescore multiplier` of 10. On average `Scalar Quantization` gives `3.77x` speed up and exactly `4x` memory saving.
 
 # Best of Both the World
 To benifit from the `memory` and `computation` requiremnt of Binary Quantization and `retrieval performance` of Scalar Quantization, in practice we
