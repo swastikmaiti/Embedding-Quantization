@@ -14,7 +14,7 @@ compuation load and memory load while preserving the accuray. Here comes `Embedd
 
 We will take our example implemetation to make comarison with normal embedding.
 
-# Tools and Parameters
+# Tools and Parameters Specifications
 
 - **faiss:** Store binary quantization embedding
 - **USearch:** Store scalar (int8) quantization
@@ -33,4 +33,21 @@ We will take our example implemetation to make comarison with normal embedding.
 # Binary Quantization
 
 To generate Binary Quantization from a `float32` embedding we simply threshold quantize each dimension at 0. It simple means `f(x)=0 if x<=0
-else 1`
+else 1`. We store the Binary Quantized Embedding in Vector DB. To perform retrieval we convert user query to binary quantized embedding. 
+Then we use Hamming Distance between qury embedding and Vector DB embeddings to perform similarity check on the Vector Database. Hamming distance
+is the number of bits by with two embeddings differ. Lowe the Hamming Distance more is the document relevant and hence higher similarity.
+
+### What is the Memory usage with Binary Quantized Embedding?
+- No of Index = 593891
+- Embedding dim = 384
+- dtype = bit, each diension is of 1 bit
+With our implemented specifications it comes to be `29 MB` (Rounded). It is `32X` lower memory requirement than `float32`
+
+# Rescoring Technique
+We have a way to retrieve similar documents with humming distance as similarity measure for Binary Quantization. Though it speed ups the
+retrieval process but preserve roughly `92.5%` retrieval performance.
+We use a technique called `rescoring` intoduced in the [paper](https://arxiv.org/abs/2106.00882) to preserve alomost `96%` retrieval performance.
+In rescoring techinque we first retrive `top_k`*`rescore multiplier` document i.e. `rescore multiplier x` times more documents than require.
+Then we perform dot prduct between their embeddings (binary) and query (f32) embedding to calculate similarity scores and return `top_k` according to 
+the new similarity score.
+
